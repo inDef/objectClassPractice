@@ -13,6 +13,7 @@ public class EntryPoint {
 
     // Objects in Java are accessed by the reference. That means that by default when comparing
     // two objects we compare the references of these objects.
+
     Default default1 = new Default('m', 'a', 'r', 'c', 'h');
     Default default2 = new Default('m', 'a', 'r', 'c', 'h');
     System.out.println("Not overridden .equals() -> compares references of the objects:");
@@ -20,6 +21,7 @@ public class EntryPoint {
 
     // Though the objects seem to be equal, their references are not, so code above returns false.
     // By default it will return true only when references are equal (pointing to the same object):
+
     default1 = default2;
     System.out.println("Comparing objects' references to one object -> .equals returns:");
     System.out.println(default1.equals(default2)); // true
@@ -29,12 +31,14 @@ public class EntryPoint {
     // For some reason we may want to compare objects not by the reference, but by their content,
     // saying "if these objects' fields are equal then the objects are equal too". To do this we
     // just need to override .equals() method as done in EqualsOverride class.
+
     EqualsOverride equalsOverride1 = new EqualsOverride('m', 'a', 'r', 'c', 'h');
     EqualsOverride equalsOverride2 = new EqualsOverride('m', 'a', 'r', 'c', 'h');
     System.out.println("Overridden .equals() compares objects' content -> returns:");
     System.out.println(equalsOverride1.equals(equalsOverride2)); // true
 
     // NOTE that "==" operator for objects is always interpreted as default .equals() method. So:
+
     System.out.println("Using '==' operator -> returns:");
     System.out.println(equalsOverride1 == equalsOverride2); // false
 
@@ -50,10 +54,12 @@ public class EntryPoint {
 
     // Here hashCode() is default. By definition it must return true, because these objects are
     // equal. But it doesnt and that is WRONG:
+
     System.out.println(".hashCode() is default -> returns: ");
     System.out.println(equalsOverride1.hashCode() == equalsOverride2.hashCode()); // false
 
     // These objects override both .equals() and .hashCode() methods:
+
     EqualsAndHashOverride equalsAndHashOverride1 = new EqualsAndHashOverride('m', 'a', 'r', 'c',
         'h');
     EqualsAndHashOverride equalsAndHashOverride2 = new EqualsAndHashOverride('m', 'a', 'r', 'c',
@@ -62,6 +68,7 @@ public class EntryPoint {
         'm');
 
     // Obviously first two are equal to each other and not to the third one.
+
     System.out.println("Equal objects are equal:");
     System.out.println(equalsAndHashOverride1.equals(equalsAndHashOverride2)); // true
     System.out.println("Unequal objects are equal:");
@@ -83,11 +90,13 @@ public class EntryPoint {
     // .toString() method is used for representation of an object in a form of a text string.
     // It is automatically triggered when writing to console via System.out.println(), and by default
     // it returns a string representing object's class and hexademical hash divided by '@' symbol.
+
     System.out.println("Default toString() on an object: ");
     System.out.println(equalsAndHashOverride1); // com.mainacad.objects.EqualsAndHashOverride@20b
 
     // When overriding toString() we set what that string will look like. So for example we can make
     // it return all chars from our AllOverride class objects, where toString() is overridden:
+
     AllOverride allOverride = new AllOverride('c', 'a', 'n', 'd', 'y');
     System.out
         .println("allOverride object gives You a " + allOverride + "! How generous it is!!! :3");
